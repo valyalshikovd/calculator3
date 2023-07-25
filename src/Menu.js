@@ -1,12 +1,33 @@
-function Menu(props) {
+import {useState} from "react";
 
+function Menu(props) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
     const handleChangeTheme = (theme) => {
         props.setTheme(theme)
     }
     return (
-        <nav className="navbar" role="navigation" aria-label="main navigation">
-            <div id="navbarBasicExample" className="navbar-menu">
-                <div className="navbar-start">
+        <nav className={"navbar is-light"}>
+            <div className={"navbar-brand"}>
+                <div className={({ isActive }) => "navbar-item is-uppercase" +
+                    (isActive ? " is-active" : "")}
+                >
+                </div>
+                <div
+                   className={showMenu ? "navbar-burger is-active" : "navbar-burger"}
+                   onClick={() => setShowMenu(!showMenu)}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div className={showMenu ? 'navbar-menu is-active' : 'navbar-menu'}
+                 onClick={() => setShowMenu(!showMenu)}>
+                <div className={"navbar-start"}>
                     <a className="navbar-item">
                         Home
                     </a>
@@ -14,7 +35,6 @@ function Menu(props) {
                     <a className="navbar-item">
                         Extended version
                     </a>
-
                     <div className="navbar-item has-dropdown is-hoverable">
                         <a className="navbar-link">
                             Change theme
@@ -30,7 +50,6 @@ function Menu(props) {
                         </div>
                     </div>
                 </div>
-
             </div>
         </nav>
     )
