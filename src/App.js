@@ -1,6 +1,6 @@
 import './App.css';
 import {Button, ButtonGroup} from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {pink} from "@mui/material/colors";
 
 
@@ -10,6 +10,20 @@ function App(){
     const [secondOper, setSecondOper] = useState(null)
     const [action, setAction] = useState(null)
     const [answer, setAnswer] = useState(null)
+    const [sizeButton, setSizeButton] = useState({ width: 120, height: 100})
+    const [flagUpdate, setFlagUpdate] = useState(true)
+    const [buttonFontSize, setFontSize] = useState("30px")
+
+    useEffect(() => {
+        if( 500 > window.innerWidth || 800 > window.innerHeight ){
+            if(flagUpdate) {
+                setSizeButton({width: 84, height: 70})
+            }
+            setFlagUpdate(false)
+        }
+    })
+
+
 
     const handleNumber = (num) => {
         if(!firstOper){
@@ -68,34 +82,34 @@ function App(){
         </div>
         <div className={"my-div-btn"}>
             <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                <Button  onClick={() => {handleNumber("1")}} sx={{ width: 120, height: 100}} >1</Button>
-                <Button  onClick={() => {handleNumber("2")}} sx={{ width: 120, height: 100}}>2</Button>
-                <Button  onClick={() => {handleNumber("3")}} sx={{ width: 120, height: 100}}>3</Button>
-                <Button  onClick={() => {handleAction("+")}} sx={{ width: 120, height: 100}}>+</Button>
+                <Button  onClick={() => {handleNumber("1")}} sx={sizeButton}>1</Button>
+                <Button  onClick={() => {handleNumber("2")}} sx={sizeButton}>2</Button>
+                <Button  onClick={() => {handleNumber("3")}} sx={sizeButton}>3</Button>
+                <Button  onClick={() => {handleAction("+")}} sx={sizeButton}>+</Button>
             </ButtonGroup>
         </div>
           <div className={"my-div-btn"}>
               <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                  <Button  onClick={() => {handleNumber("4")}} sx={{ width: 120, height: 100}}>4</Button>
-                  <Button  onClick={() => {handleNumber("5")}} sx={{ width: 120, height: 100}}>5</Button>
-                  <Button  onClick={ () => {handleNumber("6")}} sx={{ width: 120, height: 100 }}>6</Button>
-                  <Button  onClick={() => {handleAction("-")}}  sx={{ width: 120, height: 100 }}>-</Button>
+                  <Button  onClick={() => {handleNumber("4")}} sx={sizeButton}>4</Button>
+                  <Button  onClick={() => {handleNumber("5")}} sx={sizeButton}>5</Button>
+                  <Button  onClick={ () => {handleNumber("6")}} sx={sizeButton}>6</Button>
+                  <Button  onClick={() => {handleAction("-")}}  sx={sizeButton}>-</Button>
               </ButtonGroup>
           </div>
           <div className={"my-div-btn"}>
               <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                  <Button onClick={() => {handleNumber("7")}} sx={{ width: 120, height: 100 }}>7</Button>
-                  <Button onClick={() => {handleNumber("8")}} sx={{ width: 120, height: 100 }}>8</Button>
-                  <Button onClick={() => {handleNumber("9")}} sx={{ width: 120, height: 100 }}>9</Button>
-                  <Button onClick={() => {handleAction("*")}} sx={{ width: 120, height: 100 }}>*</Button>
+                  <Button onClick={() => {handleNumber("7")}} sx={sizeButton}>7</Button>
+                  <Button onClick={() => {handleNumber("8")}} sx={sizeButton}>8</Button>
+                  <Button onClick={() => {handleNumber("9")}} sx={sizeButton}>9</Button>
+                  <Button onClick={() => {handleAction("*")}} sx={sizeButton}>*</Button>
               </ButtonGroup>
           </div>
           <div className={"my-div-btn"}>
               <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                  <Button onClick={() => {handleClear()}} sx={{ width: 120, height: 100 }}>Очистить</Button>
-                  <Button onClick={() => {handleNumber("0")}} sx={{ width: 120, height: 100 }}>0</Button>
-                  <Button onClick={() => {handleGetResult()}} sx={{ width: 120, height: 100 }}>=</Button>
-                  <Button onClick={() => {handleAction("/")}} sx={{ width: 120, height: 100 }}>/</Button>
+                  <Button onClick={() => {handleClear()}} sx={sizeButton}>Очистить</Button>
+                  <Button onClick={() => {handleNumber("0")}} sx={sizeButton}>0</Button>
+                  <Button onClick={() => {handleGetResult()}} sx={sizeButton}>=</Button>
+                  <Button onClick={() => {handleAction("/")}} sx={sizeButton}>/</Button>
               </ButtonGroup>
           </div>
       </div>
