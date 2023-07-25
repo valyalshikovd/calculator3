@@ -15,7 +15,7 @@ function App(){
     const [buttonFontSize, setFontSize] = useState("30px")
 
     useEffect(() => {
-        if( 400 > window.innerWidth || 700 > window.innerHeight ){
+        if( 600 > window.innerWidth || 1000 > window.innerHeight ){
             if(flagUpdate) {
                 setSizeButton({width: 84, height: 70})
             }
