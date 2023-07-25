@@ -3,6 +3,7 @@ import {useState} from "react";
 function Menu(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
+    const [showDropDown, setShowDropDown] = useState(false)
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -25,29 +26,34 @@ function Menu(props) {
                     <span></span>
                 </div>
             </div>
-            <div className={showMenu ? 'navbar-menu is-active' : 'navbar-menu'}
-                 onClick={() => setShowMenu(!showMenu)}>
-                <div className={"navbar-start"}>
-                    <a className="navbar-item">
+            <div className={showMenu ? 'navbar-menu is-active' : 'navbar-menu'}>
+                <div className={"navbar-start"} >
+                    <a className="navbar-item" onClick={() => setShowMenu(!showMenu)}>
                         Home
                     </a>
 
-                    <a className="navbar-item">
+                    <a className="navbar-item" onClick={() => setShowMenu(!showMenu)} >
                         Extended version
                     </a>
                     <div className="navbar-item has-dropdown is-hoverable">
-                        <a className="navbar-link">
+                        <a className="navbar-link"
+                        onClick={() => {setShowDropDown(!showDropDown)}}>
                             Change theme
                         </a>
-
+                        {!showDropDown ? "" :
                         <div className="navbar-dropdown">
-                            <a className="navbar-item" onClick={() => handleChangeTheme(null)}>
+                            <a className="navbar-item" onClick={() => {handleChangeTheme(null)
+                                setShowMenu(!showMenu)}}>
                                 Classic
                             </a>
-                            <a className="navbar-item" onClick={() => handleChangeTheme({backgroundColor: "pink", borderColor: "gainsboro"})}>
+                            <a className="navbar-item" onClick={() => {
+                                handleChangeTheme({backgroundColor: "pink", borderColor: "gainsboro"})
+                                setShowMenu(!showMenu)}}>
                                 Pink
                             </a>
                         </div>
+
+                            }
                     </div>
                 </div>
             </div>
