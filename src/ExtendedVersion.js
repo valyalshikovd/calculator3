@@ -1,7 +1,7 @@
 import Menu from "./Menu";
 import {Button, ButtonGroup, createTheme} from "@mui/material";
 import {useEffect, useState} from "react";
-import BasicVersion from "./BasicVersion";
+
 import Buttons1 from "./Buttons1";
 
 
@@ -16,7 +16,13 @@ function ExtendedVersion(props) {
     });
 
     const handleAddExpression = (string) => {
-        setTextField(textField + string)
+        if(textField.length < 20){
+            setTextField(textField + string)
+        }
+    }
+    const handleBackExpression = () => {
+
+        setTextField(textField.slice(0, -1))
     }
     const handleClear = () => {
         setTextField("")
@@ -45,6 +51,7 @@ function ExtendedVersion(props) {
                 handleAddExpression={handleAddExpression}
                 handleClear={handleClear}
                 setAnswer={setAnswer}
+                handleBackExpression={handleBackExpression}
             ></Buttons1>
         </div>
     )

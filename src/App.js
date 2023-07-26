@@ -4,7 +4,6 @@ import {useEffect, useState} from "react";
 import {pink} from "@mui/material/colors";
 import "bulma/css/bulma.css"
 import Menu from "./Menu";
-import BasicVersion from "./BasicVersion";
 import ExtendedVersion from "./ExtendedVersion";
 
 

@@ -54,11 +54,6 @@ function Menu(props) {
                         Home
                     </a>
 
-                    <a className="navbar-item" onClick={() => {
-                        setShowMenu(!showMenu)
-                    }} >
-                        History
-                    </a>
                     <div className="navbar-item has-dropdown is-hoverable">
                         <a className="navbar-link"
                         onClick={() => {setShowDropDown(!showDropDown)}}>
