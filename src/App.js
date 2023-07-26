@@ -20,7 +20,6 @@ function App() {
             if (flagUpdate) {
                 setSizeButton({width: 84, height: 70})
             }
-            //setFlagUpdate(false)
         }
     })
     return (
