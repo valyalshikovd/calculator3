@@ -1,16 +1,33 @@
-import {useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 
 function Menu(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [showDropDown, setShowDropDown] = useState(false)
+    const [flagFlashingTheme, setFlagFlashingTheme] = useState(false)
+    const [flashingInterval, setFlashingInterval] = useState(null)
+    const themeRef = useRef(props.theme);
+
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
     const handleChangeTheme = (theme) => {
+        clearInterval(flashingInterval);
         props.setTheme(theme)
     }
+    const handleFlashTheme = useCallback(async () => {
+        clearInterval(flashingInterval)
+        setFlashingInterval(setInterval(() => {
+            if(themeRef.current === null){
+                props.setTheme({backgroundColor: "pink", borderColor: "gainsboro"})
+                themeRef.current = {backgroundColor: "pink", borderColor: "gainsboro"}
+            }else {
+                props.setTheme(null)
+                themeRef.current = null
+            }
+        }, 1000))
+    }, [props.setTheme]);
     return (
         <nav className={"navbar is-light"}>
             <div className={"navbar-brand"}>
@@ -43,13 +60,20 @@ function Menu(props) {
                         {!showDropDown ? "" :
                         <div className="navbar-dropdown">
                             <a className="navbar-item" onClick={() => {handleChangeTheme(null)
+                                clearInterval(flashingInterval)
                                 setShowMenu(!showMenu)}}>
                                 Classic
                             </a>
                             <a className="navbar-item" onClick={() => {
                                 handleChangeTheme({backgroundColor: "pink", borderColor: "gainsboro"})
+                                clearInterval(flashingInterval)
                                 setShowMenu(!showMenu)}}>
                                 Pink
+                            </a>
+                            <a className="navbar-item" onClick={() => {
+                                handleFlashTheme()
+                                setShowMenu(!showMenu)}}>
+                                FlashingTheme
                             </a>
                         </div>
 
