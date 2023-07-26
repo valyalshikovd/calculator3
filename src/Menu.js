@@ -50,16 +50,14 @@ function Menu(props) {
                 <div className={"navbar-start"} >
                     <a className="navbar-item" onClick={() => {
                         setShowMenu(!showMenu)
-                        props.setExtendedVersion(false)
                     }}>
                         Home
                     </a>
 
                     <a className="navbar-item" onClick={() => {
                         setShowMenu(!showMenu)
-                        props.setExtendedVersion(true)
                     }} >
-                        Extended version
+                        History
                     </a>
                     <div className="navbar-item has-dropdown is-hoverable">
                         <a className="navbar-link"

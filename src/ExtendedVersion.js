@@ -2,6 +2,7 @@ import Menu from "./Menu";
 import {Button, ButtonGroup, createTheme} from "@mui/material";
 import {useEffect, useState} from "react";
 import BasicVersion from "./BasicVersion";
+import Buttons1 from "./Buttons1";
 
 
 function ExtendedVersion(props) {
@@ -36,109 +37,15 @@ function ExtendedVersion(props) {
             <div className={"my-div"}>
                 <h1>{textField} {(answer) ? "=" : null} {answer}</h1>
             </div>
-            <div className={"my-div-btn"}>
-                <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                    <Button color="primary" onClick={() => {
-                        handleAddExpression("1")
-                    }} sx={props.sizeButton}
-                            theme={theme}
-                            style={props.theme}>1</Button>
-
-                    <Button color="primary" onClick={() => {
-                        handleAddExpression("2")
-                    }} sx={props.sizeButton}
-                            theme={theme}
-                            style={props.theme}>2</Button>
-                    <Button color="primary" onClick={() => {
-                        handleAddExpression("3")
-                    }} sx={props.sizeButton}
-                            theme={theme}
-                            style={props.theme}>3</Button>
-                    <Button color="primary" onClick={() => {
-                        handleAddExpression("+")
-                    }} sx={props.sizeButton}
-                            theme={theme}
-                            style={props.theme}>+</Button>
-
-                </ButtonGroup>
-            </div>
-            <div className={"my-div-btn"}>
-                <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                    <Button style={props.theme}
-                            onClick={() => {
-                                handleAddExpression("4")
-                            }}
-                            theme={theme}
-                            sx={props.sizeButton}>4</Button>
-                    <Button onClick={() => {
-                        handleAddExpression("5")
-                    }}
-                            style={props.theme}
-                            theme={theme}
-                            sx={props.sizeButton}>5</Button>
-                    <Button onClick={() => {
-                        handleAddExpression("6")
-                    }}
-                            style={props.theme}
-                            theme={theme}
-                            sx={props.sizeButton}>6</Button>
-                    <Button onClick={() => {
-                        handleAddExpression("-")
-                    }}
-                            style={props.theme}
-                            theme={theme}
-                            sx={props.sizeButton}>-</Button>
-                </ButtonGroup>
-            </div>
-            <div className={"my-div-btn"}>
-                <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                    <Button onClick={() => {
-                        handleAddExpression("7")
-                    }} sx={props.sizeButton}
-                            theme={theme}
-                            style={props.theme}>7</Button>
-                    <Button onClick={() => {
-                        handleAddExpression("8")
-                    }} sx={props.sizeButton}
-                            theme={theme}
-                            style={props.theme}>8</Button>
-                    <Button onClick={() => {
-                        handleAddExpression("9")
-                    }} sx={props.sizeButton}
-                            theme={theme}
-                            style={props.theme}>9</Button>
-                    <Button onClick={() => {
-                        handleAddExpression("*")
-                    }} sx={props.sizeButton}
-                            theme={theme}
-                            style={props.theme}>*</Button>
-                </ButtonGroup>
-            </div>
-            <div className={"my-div-btn"}>
-                <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                    <Button onClick={() => {
-                        handleClear()
-                        setAnswer("")
-                    }} sx={props.sizeButton}
-                            theme={theme}
-                            style={props.theme}>CL</Button>
-                    <Button onClick={() => {
-                        handleAddExpression("0")
-                    }} sx={props.sizeButton}
-                            theme={theme}
-                            style={props.theme}>0</Button>
-                    <Button onClick={() => {
-                        handleAddExpression(".")
-                    }} sx={props.sizeButton}
-                            theme={theme}
-                            style={props.theme}>.</Button>
-                    <Button onClick={() => {
-                        handleAddExpression("/")
-                    }} sx={props.sizeButton}
-                            theme={theme}
-                            style={props.theme}>/</Button>
-                </ButtonGroup>
-            </div>
+            <Buttons1
+                theme={props.theme}
+                setTheme={props.setTheme}
+                sizeButton={props.sizeButton}
+                setSizeButton={props.setSizeButton}
+                handleAddExpression={handleAddExpression}
+                handleClear={handleClear}
+                setAnswer={setAnswer}
+            ></Buttons1>
         </div>
     )
 }

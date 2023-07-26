@@ -13,7 +13,6 @@ function App() {
     const [flagUpdate, setFlagUpdate] = useState(true)
     const [buttonFontSize, setFontSize] = useState("50px")
     const [theme, setTheme] = useState(null)
-    const [extendedVersion, setExtendedVersion] = useState(false)
 
     useEffect(() => {
         if (600 > window.innerWidth || 750 > window.innerHeight) {
@@ -24,23 +23,15 @@ function App() {
     })
     return (
         <div>
-            <Menu theme={theme} setTheme={setTheme} extendedVersion={extendedVersion} setExtendedVersion={setExtendedVersion}></Menu>
+            <Menu theme={theme} setTheme={setTheme}></Menu>
             <div>
-                {extendedVersion ?
                     <ExtendedVersion
                         theme={theme}
                         setTheme={setTheme}
                         sizeButton={sizeButton}
                         setSizeButton={setSizeButton}>
                     </ExtendedVersion>
-                    :
-                    <BasicVersion
-                        theme={theme}
-                        setTheme={setTheme}
-                        sizeButton={sizeButton}
-                        setSizeButton={setSizeButton}>
-                    </BasicVersion>
-                }
+
             </div>
         </div>
     );
