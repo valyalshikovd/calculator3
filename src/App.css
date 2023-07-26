@@ -68,7 +68,7 @@
 @media (max-width: 600px) {
   .square {
     width: 352px;
-    height: 436px;
+    height: 480px;
     background-color: gainsboro;
     border-radius: 5%;
     position: absolute;
