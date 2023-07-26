@@ -136,7 +136,7 @@ function Buttons1(props) {                //добавлялка текста, �
                         props.handleBackExpression(currButtons[18])
                     }} sx={props.sizeButton}
                             theme={theme}
-                            style={props.theme}>Back</Button>
+                            style={props.theme}>{'<-'}</Button>
                 </ButtonGroup>
             </div>
         </div>
