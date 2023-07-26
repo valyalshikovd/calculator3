@@ -13,10 +13,13 @@ function Menu(props) {
         setIsOpen(!isOpen);
     };
     const handleChangeTheme = (theme) => {
+
         clearInterval(flashingInterval);
         props.setTheme(theme)
+        setFlagFlashingTheme(false)
     }
     const handleFlashTheme = useCallback(async () => {
+        setFlagFlashingTheme(true)
         clearInterval(flashingInterval)
         setFlashingInterval(setInterval(() => {
             if(themeRef.current === null){
@@ -45,11 +48,17 @@ function Menu(props) {
             </div>
             <div className={showMenu ? 'navbar-menu is-active' : 'navbar-menu'}>
                 <div className={"navbar-start"} >
-                    <a className="navbar-item" onClick={() => setShowMenu(!showMenu)}>
+                    <a className="navbar-item" onClick={() => {
+                        setShowMenu(!showMenu)
+                        props.setExtendedVersion(false)
+                    }}>
                         Home
                     </a>
 
-                    <a className="navbar-item" onClick={() => setShowMenu(!showMenu)} >
+                    <a className="navbar-item" onClick={() => {
+                        setShowMenu(!showMenu)
+                        props.setExtendedVersion(true)
+                    }} >
                         Extended version
                     </a>
                     <div className="navbar-item has-dropdown is-hoverable">
@@ -71,7 +80,9 @@ function Menu(props) {
                                 Pink
                             </a>
                             <a className="navbar-item" onClick={() => {
-                                handleFlashTheme()
+                                if(!flagFlashingTheme) {
+                                    handleFlashTheme()
+                                }
                                 setShowMenu(!showMenu)}}>
                                 FlashingTheme
                             </a>
