@@ -16,7 +16,7 @@ function ExtendedVersion(props) {
     });
 
     const handleAddExpression = (string) => {
-        if(textField.length < 20){
+        if(textField.length < 10){
             setTextField(textField + string)
         }
     }
